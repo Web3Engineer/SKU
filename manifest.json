@@ -1,0 +1,20 @@
+{
+    "name": "Hagan Ace Hardware SKU Lookup",
+    "short_name": "SKU Lookup",
+    "description": "Offline SKU lookup system for Hagan Ace Hardware cashiers",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#121212",
+    "theme_color": "#ff1654",
+    "icons": [
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cGF0aCBmaWxsPSIjZmYxNjU0IiBkPSJNNjQgOC4zYy0zMC45IDAtNTUuNyAyNC44LTU1LjcgNTUuNyAwIDMwLjkgMjQuOCA1NS43IDU1LjcgNTUuN3M1NS43LTI0LjggNTUuNy01NS43YzAtMzAuOS0yNC44LTU1LjctNTUuNy01NS43em0yMi44IDU1LjZINDEuMnYtMTBINjV2LTEwSDQxLjJWMzMuOWg0NS42djMweiIvPjwvc3ZnPg==",
+            "sizes": "128x128",
+            "type": "image/svg+xml"
+        }
+    ],
+    "orientation": "portrait",
+    "categories": ["productivity", "business"],
+    "prefer_related_applications": false,
+    "offline_enabled": true
+}

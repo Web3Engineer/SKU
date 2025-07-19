@@ -1,0 +1,454 @@
+/* Hagan Ace Hardware SKU Lookup System - Main Styles */
+:root {
+    --neon-red: #ff1654;
+    --neon-red-dim: #991030;
+    --dark-bg: #121212;
+    --text-color: #ffffff;
+    --secondary-bg: #1e1e1e;
+    --tertiary-bg: #2d2d2d;
+    --success-color: #2ecc71;
+    --tag-bg: #333333;
+}
+
+/* Base styles */
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Animations */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px var(--neon-red), 0 0 10px var(--neon-red), 0 0 15px var(--neon-red);
+    }
+    to {
+        text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red), 0 0 30px var(--neon-red);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 5px var(--neon-red);
+    }
+    50% {
+        box-shadow: 0 0 15px var(--neon-red), 0 0 20px var(--neon-red);
+    }
+    100% {
+        box-shadow: 0 0 5px var(--neon-red);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--neon-red);
+    animation: fadeIn 1s ease;
+}
+
+.logo {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--neon-red);
+    text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red);
+    animation: glow 1.5s ease-in-out infinite alternate;
+    margin-bottom: 10px;
+}
+
+header h2 {
+    font-size: 28px;
+    margin-top: 5px;
+}
+
+/* Search section */
+.search-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    animation: fadeIn 1s ease 0.2s both;
+}
+
+.search-box {
+    flex-grow: 1;
+    padding: 15px 20px;
+    border: 2px solid var(--neon-red-dim);
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    border-radius: 50px;
+    font-size: 22px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px var(--neon-red-dim);
+}
+
+.search-box:focus {
+    outline: none;
+    border-color: var(--neon-red);
+    box-shadow: 0 0 15px var(--neon-red);
+}
+
+.add-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--neon-red);
+    color: white;
+    font-size: 32px;
+    border: none;
+    margin-left: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.add-btn:hover {
+    transform: scale(1.1);
+    background-color: var(--text-color);
+    color: var(--neon-red);
+}
+
+/* SKU items */
+.sku-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: fadeIn 1s ease 0.4s both;
+}
+
+.sku-item {
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-left: 4px solid var(--neon-red-dim);
+    position: relative;
+}
+
+.sku-item:hover {
+    transform: translateX(5px);
+    background-color: var(--tertiary-bg);
+    border-left-color: var(--neon-red);
+    box-shadow: 0 0 15px rgba(255, 22, 84, 0.3);
+}
+
+.sku-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.sku-code {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--neon-red);
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px var(--neon-red-dim);
+}
+
+.sku-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tag {
+    background-color: var(--tag-bg);
+    color: var(--text-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.tag:hover {
+    border-color: var(--neon-red);
+    box-shadow: 0 0 5px var(--neon-red-dim);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background-color: var(--secondary-bg);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 0 30px var(--neon-red-dim);
+    position: relative;
+    animation: fadeIn 0.5s ease;
+}
+
+.modal-title {
+    color: var(--neon-red);
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--neon-red);
+    transform: scale(1.2);
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.form-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    background-color: var(--tertiary-bg);
+    border: 2px solid var(--neon-red-dim);
+    color: var(--text-color);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--neon-red);
+    box-shadow: 0 0 10px var(--neon-red-dim);
+}
+
+.form-button {
+    background-color: var(--neon-red);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.form-button:hover {
+    background-color: var(--neon-red-dim);
+    box-shadow: 0 0 15px var(--neon-red);
+}
+
+/* Tag input section */
+.tag-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tag-input {
+    flex-grow: 1;
+}
+
+.add-tag-btn {
+    background-color: var(--neon-red);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.add-tag-btn:hover {
+    background-color: var(--neon-red-dim);
+    box-shadow: 0 0 10px var(--neon-red);
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tag-item {
+    background-color: var(--tag-bg);
+    color: var(--text-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.remove-tag {
+    cursor: pointer;
+    color: var(--neon-red);
+    font-weight: bold;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--success-color);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 20px;
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.notification.show {
+    opacity: 1;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 36px;
+    }
+    
+    .search-box {
+        font-size: 18px;
+        padding: 12px 15px;
+    }
+    
+    .add-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+    
+    .sku-name {
+        font-size: 20px;
+    }
+    
+    .sku-code {
+        font-size: 26px;
+    }
+    
+    .tag {
+        font-size: 16px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .form-input,
+    .form-label,
+    .form-button {
+        font-size: 18px;
+    }
+}
+
+/* Click count indicator styles */
+.click-count {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--neon-red);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.click-count.visible {
+    opacity: 1;
+}
+
+.click-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background-color: var(--neon-red);
+    transition: width 0.3s ease;
+}
+
+/* Loading and no results */
+.loading, .no-results {
+    text-align: center;
+    padding: 40px;
+    font-size: 24px;
+    color: var(--text-color);
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.loading::after {
+    content: '...';
+    animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60% { content: '...'; }
+    80%, 100% { content: ''; }
+}
